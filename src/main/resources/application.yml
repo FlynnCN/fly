@@ -1,0 +1,14 @@
+mybatis:
+  # 指定全局配置文件位置
+  config-location: classpath:config/mybatis/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:com/totto/fly/mapper/*.xml
+
+#在控制台显示SQL语句
+logging:
+  level:
+    com.totto.fly.mapper: DEBUG
+
+#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql

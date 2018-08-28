@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Register for TOTTO</title>
+		 <script type="text/javascript" th:src="@{/asserts/js/jquery-1.11.3.js}"></script>
+		<!-- Bootstrap core CSS -->
+		<link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+		<script type="text/javascript">
+			$(document).ready(function(){
+			 	 $("#getCode").click(function(){
+			 		 var email = $("#email").val();
+			 		 $.post("/user/getCode",{email:email})
+			 		 alert("验证码已发送到你的邮箱"+email+"，请查看...");
+			  	 });
+			 	 
+			 	 $("#email").blur(function(){
+			 		var email = $("#email").val();
+			 		$.post("/user/checkEmail",{email:email},function(data){
+			 			if(data==false){
+			 				$("#email").val("");
+			 				alert("该邮箱已被注册！");
+			 			}
+			 		});
+			 	 });
+			});
+		</script>
+	</head>
+	<body class="text-center">
+		<form class="form-signin" th:action="@{/user/register}" method="post">
+			<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal" th:text="#{register.tip}">Please Register</h1>
+			<!--判断-->
+			<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+			<input type="text"  name="username" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
+			<input type="text" id="email" name="email" class="form-control" placeholder="Email" th:placeholder="#{register.email}" required="" autofocus="">
+			<input type="password" name="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="" autofocus="">
+			<input type="text" name="code" class="form-control" placeholder="Code" th:placeholder="#{register.code}" required="" autofocus="">
+			<button class="btn btn-lg btn-primary btn-block" th:text="#{register.getCodeButton}" id="getCode">Get Code</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{register.registerButton}">Register</button>
+			<p class="mt-5 mb-3 text-muted">© 2017-2018 By <font color="red">totto.top</font></p>
+			<a class="btn btn-sm" th:href="@{/register(l='zh_CN')}">中文</a>
+			<a class="btn btn-sm" th:href="@{/register(l='en_US')}">English</a>
+		</form>
+	</body>
+
+</html>
