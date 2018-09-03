@@ -7,11 +7,12 @@
 <body>
 <!--topbar-->
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">[[${session.loginUser.username}]]</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" th:if="${session.loginUser}!=null">[[${session.loginUser.username}]]</a>
     <font color="red">Welcome To TOTTO</font>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="/user/logout">Sign out</a>
+            <a class="nav-link" href="/user/logout" th:if="${session.loginUser}!=null">Sign Out</a>
+            <a class="nav-link" href="/index" th:if="${session.loginUser}==null">Please Sign In</a>
         </li>
     </ul>
 </nav>
