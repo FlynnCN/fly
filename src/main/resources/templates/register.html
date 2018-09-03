@@ -15,8 +15,13 @@
 			$(document).ready(function(){
 			 	 $("#getCode").click(function(){
 			 		 var email = $("#email").val();
-			 		 $.post("/user/getCode",{email:email})
-			 		 alert("验证码已发送到你的邮箱"+email+"，请查看...");
+			 		 if(email!=""){
+			 			 $.post("/user/getCode",{email:email})
+				 		 alert("验证码已发送到你的邮箱"+email+"，请查看...");
+			 		 }else{
+			 			 alert("请先填写你的邮箱地址！");
+			 			 $("#email").focus();
+			 		 }
 			  	 });
 			 	 
 			 	 $("#email").blur(function(){
@@ -43,7 +48,7 @@
 			<input type="text" name="code" class="form-control" placeholder="Code" th:placeholder="#{register.code}" required="" autofocus="">
 			<button class="btn btn-lg btn-primary btn-block" th:text="#{register.getCodeButton}" id="getCode">Get Code</button>
 			<button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{register.registerButton}">Register</button>
-			<p class="mt-5 mb-3 text-muted">© 2017-2018 By <font color="red">totto.top</font></p>
+			<p class="mt-5 mb-3 text-muted">© 2018-2019 By <font color="red">totto.top</font></p>
 			<a class="btn btn-sm" th:href="@{/register(l='zh_CN')}">中文</a>
 			<a class="btn btn-sm" th:href="@{/register(l='en_US')}">English</a>
 		</form>

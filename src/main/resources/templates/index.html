@@ -16,8 +16,13 @@
 			$(function(){
 				 $("#getNewCode").click(function(){
 			 		 var email = $("#email").val();
-			 		 $.post("/user/getNewCode",{email:email})
-			 		 alert("验证码已发送到你的邮箱"+email+"，请查看...");
+			 		 if(email!=""){
+			 			 $.post("/user/getNewCode",{email:email})
+				 		 alert("验证码已发送到你的邮箱"+email+"，请查看...");
+			 		 }else{
+			 			 alert("请先填写你的邮箱地址！");
+			 			 $("#email").focus();
+			 		 }
 			  	 });
 				 
 				 $("#email").blur(function(){
