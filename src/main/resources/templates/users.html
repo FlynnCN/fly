@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap-grid.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap-grid.min-jsf.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap-jsf.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap-reboot-jsf.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min-jsf.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap-reboot.css}" rel="stylesheet">
+<link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/asserts/js/jquery-1.11.3.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.bundle.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.js}"></script>
+
+</head>
+<body>
+	<!--引入topbar-->
+		<div th:replace="commons/bar::topbar"></div>
+		<div class="container-fluid">
+			<div class="row">
+				<!--引入sidebar-->
+				<div th:replace="commons/bar::#sidebar(activeUri='users')"></div>
+			</div>
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+				<table class="table">
+				  <thead class="thead-light">
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">CreateTime</th>
+				      <th scope="col">Phone</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Mark</td>
+				      <td>Otto</td>
+				      <td>@mdo</td>
+				      <td>@mdo</td>
+				    </tr>
+				  </tbody>
+				</table>
+          </main>
+		</div>
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+		<script type="text/javascript" src="asserts/js/popper.min.js" th:src="@{/webjars/popper.js/1.11.1/dist/popper.js}"></script>
+		<script type="text/javascript" src="asserts/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.js}"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/asserts/js/feather.min.js}"></script>
+		<script>
+			feather.replace()
+		</script>
+</body>
+</html>
